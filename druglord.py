@@ -3,9 +3,9 @@
 
 #Define city classes
 
-import gc
 
 DEFAULT_DAYS = 3
+CITY_LIST = []
 
 class City (object):
 	def __init__ (self, name):
@@ -34,15 +34,15 @@ def game_actions():
 	print "1) Move City"
 	print "2) Exit"
 
-def get_all_cities():
-	for obj in gc.get_objects():
-		if isinstance(obj, City):
-			print obj.name
 
 
-def game(day = 0, max_days = DEFAULT_DAYS):
+def game(day = 1, max_days = DEFAULT_DAYS):
 	lisbon = City("Lisbon")
 	porto = City("Porto")
+
+	CITY_LIST.append(lisbon)
+	CITY_LIST.append(porto)
+
 	jose = User("jose", lisbon)
 
 	while(day <= max_days):
@@ -51,8 +51,21 @@ def game(day = 0, max_days = DEFAULT_DAYS):
 		action = raw_input(">")
 
 		if action == "1":
-			print "Cities you can move to:"
-			get_all_cities()
+			for city in CITY_LIST:
+				print city.name
+
+			print "\n Choose new city number:"
+			new_city = raw_input(">")
+
+			try:
+				if int(new_city)
+			except Exception, e:
+				raise e
+			if new_city.lower() in [x.name.lower() for x in CITY_LIST]:
+				new
+
+
+
 		if action == "2":
 			break
 
