@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 #Define city classes
-
-
 DEFAULT_DAYS = 3
 CITY_LIST = []
 PLAYER_LIST = []
@@ -22,7 +20,7 @@ class User (object):
 		PLAYER_LIST.append(self)
 
 	def get_city(self):
-		return self.city.name
+		return self.city
 
 	def move_city(self, new_city):
 		self.city = new_city
@@ -40,10 +38,10 @@ def game_actions():
 
 
 def game(day = 1, max_days = DEFAULT_DAYS):
+
 	lisbon = City("Lisbon")
 	porto = City("Porto")
-
-	jose = User("jose", lisbon)
+	jose = User("Jose", lisbon)
 
 	while(day <= max_days):
 
@@ -68,17 +66,28 @@ def game(day = 1, max_days = DEFAULT_DAYS):
 					try:
 						try:
 							new_city = CITY_LIST[int(new_city)]
-							print "{} was in {}".format(jose.name, jose.get_city())
+							print "{} was in {}".format(jose.name, jose.get_city().name)
 							jose.move_city(new_city)
-							print "{} is now in {}".format(jose.name, jose.get_city())
+							print "{} is now in {}".format(jose.name, jose.get_city().name)
+
 							break
 						except IndexError:
 							print("{} is not a valid city.".format(int(new_city)))
 
 					except ValueError:
-						pass
-						# try:
-						# 	if new_city.lower() in [x.name.lower() for x in CITY_LIST]:
+						
+						print "\n Estamos no ValueError \n"
+						if new_city.lower() in [city.name.lower() for city in CITY_LIST]:
+							new_city = [city.name.lower() for city in CITY_LIST].index(new_city.lower())
+
+							print "{} was in {}".format(jose.name, jose.get_city().name)
+							jose.move_city(CITY_LIST[new_city])
+							print "{} is now in {}".format(jose.name, jose.get_city().name)
+							break
+
+						else:
+							print("{} is not a valid city.".format(new_city))
+
 				
 
 
