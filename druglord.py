@@ -22,6 +22,8 @@ class User (object):
 		self.city = city
 		PLAYER_LIST.append(self)
 
+		self.inventory = {"Cocaine":0, "Heroin":0}
+
 	# Get the city where the player is
 	def get_city(self):
 		return self.city
