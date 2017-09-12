@@ -8,9 +8,12 @@ class Character(models.Model):
     cash = models.DecimalField(max_digits=19, decimal_places=2)
     danger = models.IntegerField()
 
+    on_day = models.OneToOneField(to=Day)
+
 
 class Day(models.Model):
     day_number = models.IntegerField(name="Day")
+    for_sale = models.ForeignKey(to=Product, on_delete=models.CASCADE)
 
 
 class Product(models.Model):
