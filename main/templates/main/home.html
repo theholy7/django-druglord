@@ -8,10 +8,12 @@
 
  {% for char in characters %}
  <tr>
-   <td>{{ char.name }}</td>
+
+   <td><a href="{% url 'game-day' char.id char.on_day.day_number%}"> {{ char.name }}</a></td>
    <td>{{ char.cash }}</td>
    <td>{{ char.on_day.day_number }}</td>
  </tr>
+
  {% endfor %}
 
 </table>

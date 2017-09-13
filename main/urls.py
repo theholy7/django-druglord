@@ -20,5 +20,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='homepage'),
-    url(r'^char/<?id>\d/<?day>/$', views.day, name='game-day')
+    url(r'^char/(?P<char_id>\d+)/(?P<day>\d+)/$', views.day, name='game-day')
 ]

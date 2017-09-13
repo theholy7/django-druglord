@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from . import models
@@ -13,5 +14,5 @@ def home(request):
     return render(request, 'main/home.html', context=context)
 
 
-def day(request, id, day):
-    pass
+def day(request, char_id, day):
+    return HttpResponse("ID {} DAY {}".format(char_id, day))
