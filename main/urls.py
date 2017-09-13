@@ -20,4 +20,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='homepage'),
+    url(r'^char/<?id>\d/<?day>/$', views.day, name='game-day')
 ]

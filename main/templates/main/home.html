@@ -1,1 +1,17 @@
 <h1>druglord</h1>
+<table>
+ <tr>
+   <th>Name</th>
+   <th>Cash</th>
+   <th>Day</th>
+ </tr>
+
+ {% for char in characters %}
+ <tr>
+   <td>{{ char.name }}</td>
+   <td>{{ char.cash }}</td>
+   <td>{{ char.on_day.day_number }}</td>
+ </tr>
+ {% endfor %}
+
+</table>

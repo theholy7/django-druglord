@@ -5,14 +5,14 @@ from django.db import models
 
 class Character(models.Model):
     name = models.CharField(max_length=20)
-    cash = models.DecimalField(max_digits=19, decimal_places=2)
-    danger = models.IntegerField()
+    cash = models.DecimalField(default=50000, max_digits=19, decimal_places=2)
+    danger = models.IntegerField(default=0)
 
     on_day = models.OneToOneField(to='Day', on_delete=models.CASCADE)
 
 
 class Day(models.Model):
-    day_number = models.IntegerField(name="Day")
+    day_number = models.IntegerField()
 
 
 class Product(models.Model):
