@@ -10,9 +10,15 @@ class Character(models.Model):
 
     on_day = models.OneToOneField(to='Day', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "Name: {}-{}".format(self.name, self.id)
+
 
 class Day(models.Model):
     day_number = models.IntegerField()
+
+    def __str__(self):
+        return "Day: {}".format(self.day_number)
 
 
 class Product(models.Model):
@@ -20,4 +26,7 @@ class Product(models.Model):
     quantity = models.IntegerField(default=0)
     danger = models.IntegerField(default=0)
 
-    for_sale = models.ForeignKey(to='Product', on_delete=models.CASCADE)
+    for_sale = models.ForeignKey(to='Day', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Product: {}".format(self.name)
