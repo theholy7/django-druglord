@@ -1,0 +1,19 @@
+<h1>druglord</h1>
+<table>
+ <tr>
+   <th>Name</th>
+   <th>Quantity</th>
+   <th>Price</th>
+ </tr>
+
+ {% for prod in day.product_set.all %}
+ <tr>
+
+   <td>{{ prod.name }}</td>
+   <td>{{ prod.quantity }}</td>
+   <td>{{ prod.price }}</td>
+ </tr>
+
+ {% endfor %}
+
+</table>

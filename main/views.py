@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
-from . import models
+from . import game_helpers, models
 
 # Create your views here.
 
@@ -14,5 +14,14 @@ def home(request):
     return render(request, 'main/home.html', context=context)
 
 
-def day(request, char_id, day):
-    return HttpResponse("ID {} DAY {}".format(char_id, day))
+def day(request, char_id, day_number):
+    char = get_object_or_404(models.Character, pk=char_id)
+
+    day = game_helpers.create_game_day(day_number)
+
+    context = {
+        "char": char,
+        "day": day
+    }
+
+    return render(request, 'main/day.html', context=context)
